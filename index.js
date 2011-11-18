@@ -82,13 +82,18 @@ XMPPAdaptor.prototype.end = function() {
 	this.client.end();
 };
 
-XMPPAdaptor.prototype.getChannel = function(channelID, say) {
+XMPPAdaptor.prototype.getChannel = function(channelID, multiuser, say) {
+	if (say === undefined) {
+		say = multiuser;
+		multiuser = false;
+	}
 	if (this.bot.channels[channelID]) {
 		return this.bot.channels[channelID];
 	}
 	var channel = new this.bot.Channel();
 	channel.module = module.name;
 	channel.identifier = channelID;
+	channel.multiuser = multiuser;
 	channel.say = say;
 	this.bot.registerChannel(channel);
 	return channel;

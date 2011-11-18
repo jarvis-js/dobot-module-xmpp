@@ -1,8 +1,6 @@
 var xmpp = require('node-xmpp');
 
-module.exports = function(bot) {
-
-	var module = new bot.Module();
+module.exports = function(bot, module) {
 
 	module.load = function(options) {
 		module.adaptors = [];
@@ -21,8 +19,6 @@ module.exports = function(bot) {
 			module.adaptors[i].end();
 		}
 	};
-
-	return module;
 
 };
 

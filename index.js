@@ -2,17 +2,15 @@ var xmpp = require('node-xmpp');
 
 module.exports = function(bot, module) {
 
-	module.load = function(options) {
-		module.adaptors = [];
-		if (options.connection) {
-			if(!Array.isArray(options.connection)) {
-				options.connection = [ options.connection ];
-			}
-			for (var i = 0; i < options.connection.length; i++) {
-				module.adaptors.push(new XMPPAdaptor(bot, options.connection[i]));
-			}
+	module.adaptors = [];
+	if (module.options.connection) {
+		if(!Array.isArray(module.options.connection)) {
+			module.options.connection = [ module.options.connection ];
 		}
-	};
+		for (var i = 0; i < module.options.connection.length; i++) {
+			module.adaptors.push(new XMPPAdaptor(bot, module.options.connection[i]));
+		}
+	}
 
 	module.unload = function() {
 		for (var i = 0; i < module.adaptors.length; i++) {

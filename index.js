@@ -51,7 +51,7 @@ XMPPAdaptor.prototype.handleStanza = function(stanza) {
 	if (stanza.is('message') && stanza.attrs.type !== 'error') {
 		if (stanza.attrs.type === 'chat') {
 			var _this = this;
-			var channel = this.getChannel('xmpp:' + stanza.attrs.to + ':' + stanza.attrs.from, function(response) { _this.send(response) });
+			var channel = this.getChannel(stanza.attrs.to + ':' + stanza.attrs.from, function(response) { _this.send(response) });
 			var body = stanza.getChild('body');
 			if (body) {
 				var messageData = {
@@ -85,6 +85,7 @@ XMPPAdaptor.prototype.getChannel = function(channelID, multiuser, say) {
 		say = multiuser;
 		multiuser = false;
 	}
+	channelID = 'xmpp:' + channelID;
 	if (this.bot.channels[channelID]) {
 		return this.bot.channels[channelID];
 	}

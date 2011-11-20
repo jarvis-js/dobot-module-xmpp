@@ -89,9 +89,8 @@ XMPPAdaptor.prototype.getChannel = function(channelID, multiuser, say) {
 	if (this.bot.channels[channelID]) {
 		return this.bot.channels[channelID];
 	}
-	var channel = new this.bot.Channel(channelID, module.name);
+	var channel = this.bot.createChannel(channelID);
 	channel.multiuser = multiuser;
 	channel.say = say;
-	this.bot.registerChannel(channel);
 	return channel;
 };

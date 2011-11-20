@@ -81,13 +81,13 @@ XMPPAdaptor.prototype.end = function() {
 };
 
 XMPPAdaptor.prototype.getChannel = function(channelID, multiuser, say) {
-	if (say === undefined) {
-		say = multiuser;
-		multiuser = false;
-	}
 	channelID = 'xmpp:' + channelID;
 	if (this.bot.channels[channelID]) {
 		return this.bot.channels[channelID];
+	}
+	if (say === undefined) {
+		say = multiuser;
+		multiuser = false;
 	}
 	var channel = this.bot.createChannel(channelID);
 	channel.multiuser = multiuser;

@@ -17,7 +17,7 @@
     "node": ">=0.4.x"
   },
   "dependencies": {
-    "node-xmpp": ">=0.2.11"
+    "node-xmpp": ">=0.3.0"
   },
   "devDependencies": {}
 }

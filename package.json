@@ -1,16 +1,12 @@
 {
-  "author": "Paul Dixon <paul.dixon@mintbridge.co.uk>",
-  "contributors": [
-    { "name": "Alex Whitman", "email": "alex@alexwhitman.com" },
-    { "name": "Paul Dixon", "email": "paul.dixon@mintbridge.co.uk" }
-  ],
+  "author": "Alex Whitman <alex@alexwhitman.com>",
   "name": "dobot-module-xmpp",
   "description": "Dobot XMPP adapter",
   "version": "0.0.0",
   "homepage": "http://dobot.github.com/",
   "repository": {
     "type": "git",
-    "url": "git://github.com/dobot/dobot.git"
+    "url": "git://github.com/dobot/dobot-module-xmpp.git"
   },
   "keywords": ["bot"],
   "engines": {

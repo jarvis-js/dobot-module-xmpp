@@ -30,9 +30,9 @@ function XMPPAdaptor(bot, options) {
 	}
 	this.client = new xmpp.Client(this.options);
 	var _this = this;
-	this.client.on('online', function() { _this.online() });
-	this.client.on('stanza', function(stanza) { _this.handleStanza(stanza) });
-};
+	this.client.on('online', function() { _this.online(); });
+	this.client.on('stanza', function(stanza) { _this.handleStanza(stanza); });
+}
 
 XMPPAdaptor.prototype.online = function() {
 	var _this = this;
@@ -43,7 +43,7 @@ XMPPAdaptor.prototype.online = function() {
 XMPPAdaptor.prototype.rosterQuery = function() {
 	this.client.send(new xmpp.Element('iq', {
 		type: 'get',
-		id: (new Date).getTime()
+		id: (new Date()).getTime()
 	}).c('query', { xmlns: 'jabber:iq:roster' }));
 };
 
@@ -51,7 +51,7 @@ XMPPAdaptor.prototype.handleStanza = function(stanza) {
 	if (stanza.is('message') && stanza.attrs.type !== 'error') {
 		if (stanza.attrs.type === 'chat') {
 			var _this = this;
-			var channel = this.getChannel(stanza.attrs.to + ':' + stanza.attrs.from, function(response) { _this.send(response) });
+			var channel = this.getChannel(stanza.attrs.to + ':' + stanza.attrs.from, function(response) { _this.send(response); });
 			var body = stanza.getChild('body');
 			if (body) {
 				var messageData = {
